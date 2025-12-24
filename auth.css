@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)),
+    url("photos/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: #0f2236;
+  border-radius: 14px;
+  width: 900px;
+  height: 520px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
+
+/* FORMS */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: 0.6s ease;
+}
+
+.form-container form {
+  background: #0f2236;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+
+.form-title {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-subtitle {
+  color: #9bb7cf;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.security-note {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #9bb7cf;
+  text-align: center;
+}
+
+
+form h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 10px 0;
+  padding: 12px;
+  background: #0b1c2d;
+  border: 1px solid #2e4a66;
+  color: white;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  background: #1f6feb;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sign-in {
+  left: 0;
+  z-index: 2;
+}
+
+.sign-up {
+  left: 0;
+  opacity: 0;
+}
+.role-select {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0b1c2d;
+  border: 1px solid #1f6feb;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+
+  /* remove default styles */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #9bb7cf 50%),
+    linear-gradient(135deg, #9bb7cf 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+}
+.auth-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #9bb7cf;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+
+/* hover & focus */
+.role-select:hover,
+.role-select:focus {
+  border-color: #1f6feb;
+}
+
+/* dropdown options */
+.role-select option {
+  background: #0f2236;
+  color: #ffffff;
+}
+
+
+/* ACTIVE SLIDE */
+.container.right-panel-active .sign-in {
+  transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* OVERLAY */
+.overlay-container {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.6s ease;
+  z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+ background:
+  linear-gradient(rgba(26, 40, 61, 0.9), rgba(28, 43, 66, 0.9)),
+  url("photos/right.jpg");
+background-size: cover;
+background-position: center;
+
+  color: white;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transition: 0.6s ease;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.overlay-panel img {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.overlay-left {
+  left: 0;
+}
+
+.overlay-right {
+  right: 0;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid white;
+  margin-top: 20px;
+}
