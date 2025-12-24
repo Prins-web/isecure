@@ -50,14 +50,16 @@
       <div class="overlay-panel overlay-left">
         <h1>Hello!</h1>
         <p>Welcome to the I-Secure platform</p>
-        <button class="ghost" id="signInBtn">Sign In</button>
+       <button onclick="login()">Login</button>
+
       </div>
 
       <!-- RIGHT OVERLAY -->
       <div class="overlay-panel overlay-right">
         <h1>Welcome Back</h1>
         <p>Secure access for authorized users</p>
-        <button class="ghost" id="signUpBtn">Sign Up</button>
+        <button onclick="signup()">Sign Up</button>
+
         
       </div>
       
@@ -68,5 +70,42 @@
 </div>
 
 <script src="auth.js"></script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "XXXX",
+    appId: "XXXX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.signup = function () {
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Signup successful"))
+      .catch(err => alert(err.message));
+  };
+
+  window.login = function () {
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Login successful"))
+      .catch(err => alert(err.message));
+  };
+</script>
+
 </body>
 </html>
+
