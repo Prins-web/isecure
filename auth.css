@@ -7,7 +7,7 @@ body {
   height: 100vh;
   background:
     linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)),
-    url("bg.jpg");
+    url("photos/bg.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -180,7 +180,7 @@ button {
 .overlay {
  background:
   linear-gradient(rgba(26, 40, 61, 0.9), rgba(28, 43, 66, 0.9)),
-  url("right.jpg");
+  url("photos/right.jpg");
 background-size: cover;
 background-position: center;
 
