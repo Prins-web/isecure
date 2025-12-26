@@ -69,71 +69,11 @@
 
 </div>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } 
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc, serverTimestamp } 
-    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // 🔹 Your Firebase config (use YOUR real values)
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "XXXX",
-    appId: "XXXX"
-  };
-
-  // Init
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  // 🔹 SIGNUP FUNCTION
-  window.signup = async function () {
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
-    if (!fullName || !email || !password) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    try {
-      // 1️⃣ Create auth account
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      const user = userCredential.user;
-
-      // 2️⃣ Save user data in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        fullName: fullName,
-        email: email,
-        role: "user",
-        createdAt: serverTimestamp()
-      });
-
-      alert("Signup successful!");
-      console.log("User saved in Firestore");
-
-      // (Optional redirect)
-      // window.location.href = "dashboard.html";
-
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-</script>
 
 
 </body>
 </html>
+
 
 
