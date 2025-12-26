@@ -5,3 +5,4 @@ document.getElementById("signUpBtn").onclick = () =>
 
 document.getElementById("signInBtn").onclick = () =>
   container.classList.remove("right-panel-active");
+
